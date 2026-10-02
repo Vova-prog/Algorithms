@@ -56,12 +56,7 @@ int main(int argc, char* argv[])
 	}
 
 	std::string line;
-	if (!std::getline(infile, line)) {
-		std::cerr << "Cannot read input file" << std::endl;
-		return 1;
-	}
-
-	bool result = checkBrackets(line);
+	std::getline(infile, line);
 
 	std::ofstream outfile(argv[2]);
 	if (!outfile.is_open()) {
@@ -69,6 +64,12 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
+	if (line.empty()) {
+		outfile << "NO" << std::endl;
+		return 0;
+	}
+
+	bool result = checkBrackets(line);
 	outfile << (result ? "YES" : "NO") << std::endl;
 
 	return 0;
