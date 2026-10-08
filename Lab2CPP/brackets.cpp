@@ -30,10 +30,14 @@ static bool checkBrackets(const std::string& line)
 			stack.push((Data)c);
 		}
 		else if (isClosing(c)) {
-			if (stack.empty()) return false;
+			if (stack.empty()) {
+				return false;
+			}
 			
 			char top = (char)stack.get();
-			if (!isMatchcingPair(top, c)) return false;
+			if (!isMatchcingPair(top, c)) {
+				return false;
+			}
 
 			stack.pop();
 		}

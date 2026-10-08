@@ -12,7 +12,9 @@ Stack::Stack(const Stack &a) : list_(a.list_)
 
 Stack &Stack::operator=(const Stack &a)
 {
-    if (this == &a) return *this;
+    if (this == &a) {
+        return *this;
+    }
     list_ = a.list_;
     // implement or disable this function
     return *this;
@@ -29,13 +31,17 @@ void Stack::push(Data data)
 
 Data Stack::get() const
 {
-    if (list_.first() == nullptr) throw std::out_of_range("Stack::get: stack is emty");
+    if (list_.first() == nullptr) {
+        throw std::out_of_range("Stack::get: stack is emty");
+    }
     return list_.first()->data();
 }
 
 void Stack::pop()
 {
-    if (list_.first() == nullptr) throw std::out_of_range("Stack::get: stack is emty");
+    if (list_.first() == nullptr) {
+        throw std::out_of_range("Stack::get: stack is emty");
+    }
     list_.erase_first();
 }
 
